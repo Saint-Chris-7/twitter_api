@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fetch.apps.FetchConfig',
+    'django_celery_beat',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,3 +124,25 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# twitter api keys
+API_KEY = "vmvWDivnn4cUFkcqCj6ITOWSD"
+API_KEY_SECRET = "HmcIEX0jShzTXojzbktJMFDBKz7TgySyrly0RIg4jWP4Afnqnc"
+
+BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAACxBiQEAAAAAw775%2BDw540nuGdu1N3l3rW0zaTM%3D8mzEIFaQvSZNe026RnMiTauNdqW6Bf0uVe9g6hmmIzqSBeRKQG"
+
+ACCESS_TOKEN = "3430467803-e2hH1srETYMvwB3TN2Wq9BK9WweltiRhSSnAzSP"
+ACCESS_TOKEN_SECRET = "2itZtjFdhPTBm91oxDgvCywTAlA0VljhFlO2JaCqjVzmu"
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache-db',
+    }
+}
+
+# Celery settings
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "django-db"
