@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+from decouple import config,Csv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=8kzn1zh5-vhd_er4ixnl-rz*j$ej5abzd%=zv#)h9$r)tt*p)'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG",default=True,cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config("ALLOWED_HOST",cast=Csv())
 
 
 # Application definition
@@ -127,13 +127,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # twitter api keys
-API_KEY = "vmvWDivnn4cUFkcqCj6ITOWSD"
-API_KEY_SECRET = "HmcIEX0jShzTXojzbktJMFDBKz7TgySyrly0RIg4jWP4Afnqnc"
+API_KEY = config("API_KEY")
+API_KEY_SECRET = config("API_KEY_SECRET")
 
-BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAACxBiQEAAAAAw775%2BDw540nuGdu1N3l3rW0zaTM%3D8mzEIFaQvSZNe026RnMiTauNdqW6Bf0uVe9g6hmmIzqSBeRKQG"
-
-ACCESS_TOKEN = "3430467803-e2hH1srETYMvwB3TN2Wq9BK9WweltiRhSSnAzSP"
-ACCESS_TOKEN_SECRET = "2itZtjFdhPTBm91oxDgvCywTAlA0VljhFlO2JaCqjVzmu"
+BEARER_TOKEN = config("BEARER_TOKEN")
+ACCESS_TOKEN = config("ACCESS_TOKEN")
+ACCESS_TOKEN_SECRET = config("ACCESS_TOKEN_SECRET")
 
 
 CACHES = {
