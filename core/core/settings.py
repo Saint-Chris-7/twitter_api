@@ -26,7 +26,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG",default=True,cast=bool)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS",cast=Csv())
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 
 
 # Application definition
@@ -130,7 +130,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # twitter api keys
 API_KEY = config("API_KEY")
 API_KEY_SECRET = config("API_KEY_SECRET")
-
 BEARER_TOKEN = config("BEARER_TOKEN")
 ACCESS_TOKEN = config("ACCESS_TOKEN")
 ACCESS_TOKEN_SECRET = config("ACCESS_TOKEN_SECRET")
@@ -145,4 +144,4 @@ CACHES = {
 
 # Celery settings
 CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "django-db"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"

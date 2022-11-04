@@ -3,7 +3,7 @@ from django.conf import Settings
 
 # Authenticate to Twitter
 
-def search_country_trend():
+def global_trends():
     auth = tweepy.OAuthHandler("vmvWDivnn4cUFkcqCj6ITOWSD", "HmcIEX0jShzTXojzbktJMFDBKz7TgySyrly0RIg4jWP4Afnqnc")#comnsumer_key, consumer_secret
     auth.set_access_token("3430467803-CsdR29ABFMA2MEjVLjudbelUyXvtmLvB3WsEK7w", "TWPzjdKaVJD6ObAvBsqFgCuirpoQTrdsOCGnb8FnB9v6p")#access token, acess_token_sececret
 
@@ -21,5 +21,5 @@ def search_country_trend():
     return trends_result[0]["trends"]
 
 
-search_country_trend()
+
     
