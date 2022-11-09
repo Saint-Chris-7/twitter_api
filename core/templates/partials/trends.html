@@ -1,0 +1,8 @@
+
+<!-- global trends -->
+
+<div class="wrapper" hx-get="{% url 'fetch:trend-partial' %}" hx-trigger="" hx-swap="innerHTML" hx-target="this">
+    {% for trend in trendings %}
+    <p>{{trend.name}}</p> <a href="{{trend.url}}" target="_blank">click here</a>
+    {% endfor %}
+</div>

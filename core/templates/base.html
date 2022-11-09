@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/htmx.org@1.8.2"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Twitter dashboard</title>
 </head>
 <body>
     <!-- timeline tweets -->
-    <div class="container" style="display: flex; justify-content:center; align-items:center; margin:30px auto;">
-        <div class="wrapper" hx-get="{% url 'fetch:index-page' %}" hx-trigger="every 20s" hx-swap="innerHTML" hx-target="this">
-            {% for tweet in tweets %}
-            <p>{{tweet.user.name}}</p> <p>{{tweet.text}}</p>
-            {% endfor %}
-        </div>
+    <div class="container">
+        {% include "partials/timeline.html" %}
+        {% include "partials/trends.html" %}
 
     </div>
     

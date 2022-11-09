@@ -1,0 +1,7 @@
+
+    <!-- timeline tweets -->
+        <div class="wrapper" hx-get="{% url 'fetch:timeline-partial' %}" hx-trigger="" hx-swap="innerHTML" hx-target="this">
+            {% for tweet in tweets %}
+            <p>{{tweet.user.name}}</p> <p>{{tweet.text}}</p>
+            {% endfor %}
+        </div>

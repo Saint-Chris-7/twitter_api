@@ -40,3 +40,7 @@ def my_timeline():
     # for tweet in timeline:
     #     print(f"{tweet.user.name} said {tweet.text}")
     return timeline
+
+@shared_task(name="adding_two_numbers")
+def summing(num1:int, num2:int):
+    return num1 + num2
