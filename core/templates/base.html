@@ -6,14 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/htmx.org@1.8.2"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Twitter dashboard</title>
 </head>
 <body>
     <!-- timeline tweets -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'fetch:trend-partial' %}">Gloal Trends</a></li>
+            <li><a href="{% url 'fetch:timeline-partial' %}">My Timeline</a></li>
+            <li>Date today: {% now "SHORT_DATETIME_FORMAT" %}</li>
+        </ul>
+    </nav>
     <div class="container">
-        {% include "partials/timeline.html" %}
-        {% include "partials/trends.html" %}
+        {% block timeline %}
+        {% endblock timeline %}
+
+        {% block trend %}
+        {% endblock trend %}
 
     </div>
     

@@ -1,8 +1,13 @@
-
+{% extends "base.html" %}
 <!-- global trends -->
 
-<div class="wrapper" hx-get="{% url 'fetch:trend-partial' %}" hx-trigger="" hx-swap="innerHTML" hx-target="this">
+{% block trend %}
+
+<div class="wrapper" hx-get="{% url 'fetch:trend-partial' %}" hx-trigger="" hx-swap="innerHTML" hx-target="this" hx-trigger="every 600s">
+    <h3>Twitter Global Trends</h3>
+
     {% for trend in trendings %}
-    <p>{{trend.name}}</p> <a href="{{trend.url}}" target="_blank">click here</a>
+    <p>#{{forloop.counter}}| {{trend.name}} <a href="{{trend.url}}" target="_blank">click here</a></p>
     {% endfor %}
 </div>
+{% endblock trend %}

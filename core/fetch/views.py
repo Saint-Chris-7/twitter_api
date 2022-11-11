@@ -11,19 +11,17 @@ from .timeline import my_timeline
 from .trends import global_trends
 
 
-class IndexView(TemplateView):
-    template_name = "base.html"
 
 CACHE_TTL = getattr(settings,"CACHE_TTL",DEFAULT_TIMEOUT)
 method_decorator(cache_page(CACHE_TTL),name="dispatch")
 class TrendView(TemplateView):
-    template_name = "trends.html"
+    template_name = "partials/trends.html"
     
     
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["trendings"] = global_trends()
-        print(context["trendings"])
+        print(context["trendings"] )
         return context
 
 
@@ -32,7 +30,7 @@ method_decorator(cache_page(CACHE_TTL),name="dispatch")
 class TimelineView(TemplateView):
     """ Timeline view """
 
-    template_name = "timeline.html"
+    template_name = "partials/timeline.html"
     
     
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:

@@ -1,7 +1,11 @@
-
+{% extend base.html %}
+{% block timeline %}
     <!-- timeline tweets -->
-        <div class="wrapper" hx-get="{% url 'fetch:timeline-partial' %}" hx-trigger="" hx-swap="innerHTML" hx-target="this">
+        <div class="wrapper" hx-get="{% url 'fetch:timeline-partial' %}" hx-trigger="" hx-swap="innerHTML" hx-target="this" hx-trigger="every 600s">
+            <h3>My Twitter Timeline</h3>
+
             {% for tweet in tweets %}
-            <p>{{tweet.user.name}}</p> <p>{{tweet.text}}</p>
+            <p> #{{forloop.counter}} | {{tweet.user.name}} {{tweet.text}}</p>
             {% endfor %}
         </div>
+    {% endblock timeline %}
